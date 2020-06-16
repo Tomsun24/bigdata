@@ -12,6 +12,7 @@
         <module>flink</module>
         <module>spark</module>
         <module>leetcode</module>
+        <module>mapreduce</module>
     </modules>
     <properties>
         <spark.version>2.1.1</spark.version>
