@@ -14,7 +14,9 @@ public class GroupMapper extends Mapper<LongWritable, Text,Text, IntWritable> {
     @Override
     protected void map(LongWritable key, Text value, Context context) throws IOException, InterruptedException {
         String[] splitwords = value.toString().split("/t");
-        k.set(splitwords[0]+"--"+splitwords[1]);
-        context.write(k,v);
+        for (int i = 0; i < splitwords.length; i++) {
+            k.set(splitwords[i]);
+            context.write(k,v);
+        }
     }
 }

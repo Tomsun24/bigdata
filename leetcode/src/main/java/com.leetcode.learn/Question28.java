@@ -26,16 +26,43 @@ public class Question28 {
         System.out.printf( strStr("hello",  "ll")+"");
     }
 
+    //解法一 使用循环遍历的方式进行，字符串截取比较值大小使用equals
+    //时间复杂度为O(h-n) 空间复杂度 O(1)
     public static int strStr(String haystack, String needle) {
+        //先找出两个字符串的长度
        int h=haystack.length();
        int n=needle.length();
-        for (int i = 0; i < h-n+1; i++) {
+       //循环遍历每个长的那个歌字符串从下标0到总长度-n+1,即保证剩下的字符串长度要小于要比较的长度
+       for (int i = 0; i < h-n+1; i++) {
             if(haystack.substring(i,i+n).equals(needle)){
                 return i;
             }
         }
-
         return -1;
-
     }
+
+
+    //解法二 解法一优化
+    //只有当我们遇到首字母相同才进行数据比较
+    public static int strStr2(String haystack, String needle) {
+
+        int h=haystack.length();
+        int n=needle.length();
+        if(h<n){
+            return -1;
+        }
+        if(n==0){
+            return 0;
+        }
+        for (int i = 0; i < h-n+1; i++) {
+            if(haystack.charAt(i)==needle.charAt(0)){
+                if (haystack.substring(i,i+n).equals(needle)) {
+                    return i;
+                }
+            }
+
+        }
+        return -1;
+    }
+
 }
